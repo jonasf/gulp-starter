@@ -1,0 +1,15 @@
+{
+  "name": "gulp-starter",
+  "version": "0.1.0",
+  "description": "Starter gulpfile.js with common tasks",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonasf/gulp-starter.git"
+  },
+  "author": "Jonas Fredriksson",
+  "license": "MIT",
+  "homepage": "https://github.com/jonasf/gulp-starter",
+  "devDependencies": {
+    "gulp": "^3.8.10"
+  }
+}
