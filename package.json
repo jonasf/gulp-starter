@@ -10,6 +10,7 @@
   "license": "MIT",
   "homepage": "https://github.com/jonasf/gulp-starter",
   "devDependencies": {
-    "gulp": "^3.8.10"
+    "gulp": "^3.8.10",
+    "gulp-sass": "^1.2.2"
   }
 }
