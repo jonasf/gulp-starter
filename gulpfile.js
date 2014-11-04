@@ -11,7 +11,12 @@ gulp.task('sass', function () {
         .pipe(gulp.dest(config.sass.dest));
 });
 
-gulp.task('build', ['sass']);
+gulp.task('copy-static-files', function() {
+    gulp.src(config.staticfiles.src)
+    .pipe(gulp.dest(config.staticfiles.dest));
+});
+
+gulp.task('build', ['sass', 'copy-static-files']);
 
 gulp.task('default', ['build']);
 
