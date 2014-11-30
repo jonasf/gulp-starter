@@ -6,7 +6,7 @@ var minifycss = require('gulp-minify-css');
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
 
-gulp.task('sass', function () {
+gulp.task('style', function () {
     gulp.src(config.sass.src)
         .pipe(sass())
         .pipe(minifycss())
@@ -26,11 +26,11 @@ gulp.task('js', function() {
 		.pipe(gulp.dest(config.js.dest));
 });
 
-gulp.task('build', ['sass', 'js', 'copy-static-files']);
+gulp.task('build', ['style', 'js', 'copy-static-files']);
 
 gulp.task('default', ['build']);
 
 gulp.task('watch', ['build'], function(){
-	gulp.watch(config.sass.src, ['sass']);
+	gulp.watch(config.sass.src, ['style']);
 	gulp.watch(config.js.src, ['js']);
 });
