@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var minifycss = require('gulp-minify-css');
 var jshint = require('gulp-jshint');
+var uglify = require('gulp-uglify');
 
 gulp.task('sass', function () {
     gulp.src(config.sass.src)
@@ -20,7 +21,9 @@ gulp.task('copy-static-files', function() {
 gulp.task('js', function() {
 	gulp.src(config.js.src)
 		.pipe(jshint())
-		.pipe(jshint.reporter('default', { verbose: true }));
+		.pipe(uglify())
+		.pipe(jshint.reporter('default', { verbose: true }))
+		.pipe(gulp.dest(config.js.dest));
 });
 
 gulp.task('build', ['sass', 'js', 'copy-static-files']);
