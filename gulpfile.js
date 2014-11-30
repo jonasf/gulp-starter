@@ -3,6 +3,7 @@ var config = require('./gulpconfig')
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var minifycss = require('gulp-minify-css');
+var jshint = require('gulp-jshint');
 
 gulp.task('sass', function () {
     gulp.src(config.sass.src)
@@ -16,10 +17,17 @@ gulp.task('copy-static-files', function() {
     .pipe(gulp.dest(config.staticfiles.dest));
 });
 
-gulp.task('build', ['sass', 'copy-static-files']);
+gulp.task('js', function() {
+	gulp.src(config.js.src)
+		.pipe(jshint())
+		.pipe(jshint.reporter('default', { verbose: true }));
+});
+
+gulp.task('build', ['sass', 'js', 'copy-static-files']);
 
 gulp.task('default', ['build']);
 
 gulp.task('watch', ['build'], function(){
 	gulp.watch(config.sass.src, ['sass']);
+	gulp.watch(config.js.src, ['js']);
 });
